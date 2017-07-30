@@ -1,0 +1,17 @@
+#Makeing a blastn database
+
+    mkdir db_dir
+    cd db_dir
+    makeblastdb -in input.fasta -dbtype nucl -out db_name
+
+#BLAST search to extract Borrelia reads
+
+    blastn -task blastn -query input.fasta -outfmt 6 -evalue 0.0000000001 -db db_dir/db_name -out output.txt  
+
+#Using BLAST output (-outfmt 6) to find and extract hits in .fasta
+     
+    cat output.txt | awk '{print $1;}' > seqid.txt
+
+    usearch9.2 -fastx_getseqs input_to_BLAST.fasta -lables seqid.txt -fastaout blast_hits.fasta
+          #or use option -notmatched instead of -fastaout to give seqs that did not match blast hits
+          
