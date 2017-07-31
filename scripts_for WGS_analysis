@@ -15,3 +15,7 @@
     usearch9.2 -fastx_getseqs input_to_BLAST.fasta -lables seqid.txt -fastaout blast_hits.fasta
           #or use option -notmatched instead of -fastaout to give seqs that did not match blast hits
           
+#Count number of seqs in a .fasta file
+
+    grep -c "^>" file.fasta
+          
