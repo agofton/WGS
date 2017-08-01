@@ -1,0 +1,40 @@
+chmod 600 ~/.ssh/my_key_pair.pem
+
+ssh -i ~/.ssh/my_key_pair.pem ubuntu@###.###.###.##
+
+sudo apt-get update
+
+df -h #check all files, directories, permissions
+
+#attach volume storage - only do once
+
+cd /
+
+fdisk -l /dev/vdc
+
+mkfs.ext4 /dev/vdc
+
+mkdir /data
+
+mount /dev/vdc /data
+
+df -h | grep vdc
+
+#add line to edn of /etc/fstab to make volume mount permanent
+
+/dev/vdc /data ext4 defults 0 0
+
+# install programs
+
+sudo apt-get install blast2
+
+sudo atp-get install bwa 
+
+sudo atp-get install bowtie2
+
+sudo apt-get install fastx-toolkit
+
+sudo apt-get install velvet
+
+
+
