@@ -23,6 +23,7 @@ for file1 in i${input_dir}/*.fasta
   do
     blastn -task blastn -query ${file1} -db ${db_dir}/${db_name} -evalue ${evalue} -max_target_seqs ${max_target_seqs} -num_threads ${num_threads} > "${output_dir}/$(basename "$file1" .fasta)_blastout.txt"
 done
+#the was the blastn script is formatted with > output instead of -out is important for the blastn_progress.sh script
 ################################################################################
 # step 2, extract hits seq IDs
 
