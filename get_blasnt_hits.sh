@@ -1,4 +1,5 @@
 #!/bin/bash
+#Requres blastn and usearch on the PATH
 
 #BLAST parameters
 ################################################################################
@@ -20,7 +21,7 @@ blast_fasta_out_dir=""
 
 for file1 in i${input_dir}/*.fasta
   do
-    blastn -task blastn -query ${file1} -db ${db_dir}/${db_name} -out "${output_dir}/$(basename "$file1" .fasta)_blastout.txt" -evalue ${evalue} -max_target_seqs ${max_target_seqs} -num_threads ${num_threads}
+    blastn -task blastn -query ${file1} -db ${db_dir}/${db_name} -evalue ${evalue} -max_target_seqs ${max_target_seqs} -num_threads ${num_threads} > "${output_dir}/$(basename "$file1" .fasta)_blastout.txt"
 done
 ################################################################################
 # step 2, extract hits seq IDs
